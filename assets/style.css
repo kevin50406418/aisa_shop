@@ -1,0 +1,56 @@
+body {
+    width: 100%;
+    *zoom: 1;
+    font-family: "微軟正黑體", "Arial Unicode MS", sans-serif !important;
+}
+
+body:before,
+body:after {
+    content: "";
+    display: table;
+}
+
+body:after {
+    clear: both;
+}
+
+#maincolumn {
+    display: inline;
+    float: left;
+    width: 73%;
+    margin: 0 1%;
+}
+
+#sidebar {
+    display: inline;
+    float: left;
+    width: 23%;
+    margin: 0 1%;
+}
+
+header#top {
+    background-color: black;
+    margin-bottom: 1em;
+}
+
+#top h1 {
+    font-family: "微軟正黑體", "Arial Unicode MS", sans-serif !important;
+    font-size: 2em;
+    padding: 1em;
+    color: white;
+}
+
+#top h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+
+ul#boxes li {
+    font-family: Georgia;
+    font-size: 1.33em;
+    padding: 2.5em 0;
+    color: #999;
+    background-color: #e5e5e5;
+    text-align: center;
+}
