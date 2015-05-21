@@ -82,4 +82,51 @@ function adduser($user){
 		return true;
 	}
 }
+function alert($type,$text){
+	$class="";
+	switch($type){
+		case 's':
+			$class="positive";
+		break;
+		case 'd':
+			$class="negative";
+		break;
+		case 'w':
+			$class="warning";
+		break;
+		case 'bk':
+			$class="black";
+		break;
+		case 'y':
+			$class="yellow";
+		break;
+		case 'g':
+			$class="green";
+		break;
+		case 'b':
+			$class="blue";
+		break;
+		case 'o':
+			$class="orange";
+		break;
+		case 'pp':
+			$class="purple";
+		break;
+		case 'pk':
+			$class="pink";
+		break;
+		case 't':
+			$class="teal";
+		break;
+		case 'r':
+			$class="red";
+		break;
+		default:
+			$class="info";
+		break;
+	}
+	echo '<div class="ui message '.$class.'">';
+	echo $text;
+	echo "</div>";
+}
 ?>
