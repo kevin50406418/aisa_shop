@@ -13,6 +13,17 @@ if(is_login()){
 				include("page/page-admin_type.php");
 			break;
 			case "store":
+				if(isset($_POST['store_name'])){
+					if(
+						$db->insert(array("store_name"=>$_POST['store_name']),"shop_store") && 
+						$db->insert(array("store_id"=>$db->LastInsertID(),"user_login"=>$_SESSION['user_login']),"shop_store_admin")
+					){
+						alert("s","新增成功");
+					}else{
+						alert("s","新增失敗");
+					}
+				}
+				$shop_store=$db->Select("shop_store");
 				include("page/page-admin_store.php");
 			break;
 			case "order":
