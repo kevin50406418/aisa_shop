@@ -7,10 +7,20 @@ if(is_login()){
 		include("page/page-sysop.php");
 		switch($_GET['act']){
 			case "item":
-				include("page/page-admin_item.php");
+				$store=$db->Select("shop_store",array('store_id' => $_GET['store_id'] ));
+				//print_r($store);
+				if(is_array($store)){
+					include("page/page-admin_item.php");
+				}
+				
 			break;
 			case "type":
-				include("page/page-admin_type.php");
+				$store=$db->Select("shop_store",array('store_id' => $_GET['store_id'] ));
+				//print_r($store);
+				if(is_array($store)){
+					include("page/page-admin_type.php");
+				}
+				
 			break;
 			case "store":
 				if(isset($_POST['store_name'])){

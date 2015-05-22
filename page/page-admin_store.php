@@ -11,16 +11,21 @@
 <?php if(is_array($shop_store)){?>
 <table class="ui table">
 	<thead>
-		<th>#</th>
-		<th>商店名稱</th>
-		<th>操作</th>
+		<th width="5%">#</th>
+		<th width="50%">商店名稱</th>
+		<th width="40%">操作</th>
 	</thead>
 	<?php foreach ($shop_store as $key => $store) {?>
 	<tr>
 		<td><?php echo $store['store_id']?></td>
-		<td><?php echo $store['store_name']?></td>
 		<td>
-			<a href="#" class="ui button blue">編輯</a>
+			<a href="sysop.php?act=editshop&store_id=<?php echo $store['store_id']?>"><i class="circular edit icon"></i></a>
+			<?php echo $store['store_name']?>
+		</td>
+		<td>
+			<a href="sysop.php?act=item&store_id=<?php echo $store['store_id']?>" class="ui button blue">商品管理</a>
+			<a href="sysop.php?act=type&store_id=<?php echo $store['store_id']?>" class="ui button green">新增商品分類</a>
+			<a href="#" class="ui button orange">商店編輯</a>
 		</td>
 	</tr>
 	<?php }?>

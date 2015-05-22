@@ -31,7 +31,7 @@
     		<?php if(is_login()){?>
     		<?php if(is_sysop()){?><a class="item" href="sysop.php">管理中心</a><?php }?>
 			<div class="ui dropdown item">
-				<?php echo $_SESSION['user_login']?> ▼
+				<i class="user icon"></i> <?php echo $_SESSION['user_login']?> <i class="caret down icon"></i>
 				<div class="menu">
 					<a class="item">會員中心</a>
 					<a class="item">訂單查詢</a>
