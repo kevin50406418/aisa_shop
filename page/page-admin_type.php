@@ -21,7 +21,7 @@
 		<tr>
 			<td><?php echo $type['type_id']?></td>
 			<td>
-				<a href="sysop.php?act=edittype&store_id=<?php echo $store['store_id']?>"><i class="circular edit icon"></i></a>
+				<a href="sysop.php?act=edittype&store_id=<?php echo $store[0]['store_id'];?>&type_id=<?php echo $type['type_id']?>"><i class="circular edit icon"></i></a>
 				<?php echo $type['type_name']?>
 			</td>
 		</tr>

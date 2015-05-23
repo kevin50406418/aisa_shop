@@ -3,7 +3,7 @@
 	<i class="building icon"></i> <?php echo $store[0]['store_name'];?> 商品管理
 </h2>
 <div class="ui raised segment">
-<form class="ui form">
+<form class="ui form" method="post" action="sysop.php?act=item&store_id=<?php echo $store[0]['store_id'];?>">
 	<table class="ui table">
 		<thead>
 			<tr>
@@ -38,25 +38,37 @@
 	<button class="ui button blue">新增商品</button>
 </form>
 </div>
+
 <?php if(is_array($items)){?>
 <div class="ui raised segment">
 <table class="ui table">
 	<thead>
 		<tr>
 			<th class="one wide">#</th>
-			<th>分類名稱</th>
+			<th class="eight wide">商品名稱</th>
+			<th class="two wide">商品售價</th>
+			<th class="two wide">商品數量</th>
+			<th class="three wide">商品分類</th>
+			<th class="one wide"></th>
 		</tr>
 	</thead>
 	<?php foreach ($items as $key => $item) {?>
 		<tr>
 			<td><?php echo $item['item_id']?></td>
 			<td>
-				<a href="sysop.php?act=edititem&store_id=<?php echo $store['store_id']?>&item=<?php echo $item['item_id']?>"><i class="circular edit icon"></i></a>
+				<?php if($item['item_num']==0){?>
+				<div class="ui red horizontal label">缺貨</div>
+				<?php }else if($item['item_num']<5){?>
+				<div class="ui green horizontal label">數量低</div>
+				<?php }?>
 				<?php echo $item['item_name']?>
 			</td>
 			<td><?php echo $item['item_price']?></td>
 			<td><?php echo $item['item_num']?></td>
 			<td><?php echo $item['item_type']?></td>
+			<td>
+				<a href="sysop.php?act=edititem&store_id=<?php echo $store[0]['store_id']?>&item_id=<?php echo $item['item_id']?>"><i class="circular edit icon"></i></a>
+			</td>
 		</tr>
 	<?php }?>
 </table>
