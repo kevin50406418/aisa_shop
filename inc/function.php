@@ -82,7 +82,7 @@ function adduser($user){
 		return true;
 	}
 }
-function alert($type,$text){
+function alert($type,$text,$url="S",$time=2){
 	$class="";
 	switch($type){
 		case 's':
@@ -128,5 +128,12 @@ function alert($type,$text){
 	echo '<div class="ui message '.$class.'">';
 	echo $text;
 	echo "</div>";
+	if($time>0){
+		if($url!="S"){
+			echo '<meta http-equiv="refresh" content="'.$time.'; url='.$url.'" />';
+		}else{
+			echo '<meta http-equiv="refresh" content="'.$time.'" />';
+		}
+	}
 }
 ?>

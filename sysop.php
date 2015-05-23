@@ -50,6 +50,32 @@ if(is_login()){
 							alert("d","更新失敗");
 						}
 					}
+					if(count($_FILES)>0) {
+						$file_name = $_FILES['file']['name']; //取得檔名
+						$fn_array=explode(".",$file_name);//分割檔名
+						$mainName = $fn_array[0];//檔名
+						$subName = $fn_array[1];//副檔名
+
+						$is_img = array('png','jpg','gif');
+						if(in_array($subName,$is_img)){
+							$upFilePath = ABSPATH.'img/'.$_GET['store_id']."-".$_GET['item_id'].".".$subName;
+							$temploadfile = $_FILES['file']['tmp_name'];
+							if(file_exists($upFilePath)){
+								unlink($upFilePath);
+							}
+							if(move_uploaded_file($temploadfile , $upFilePath)){
+								if( $db->Update("shop_item",array('item_img' => $_GET['store_id']."-".$_GET['item_id'].".".$subName, ),array('store_id'=>$_GET['store_id'],'item_id'=>$_GET['item_id'])) ){
+									alert("s","上傳成功");
+								}else{
+									alert("d","上傳失敗");
+								}
+							}else{
+								alert("d","上傳失敗");
+							}						
+						}else{
+							alert("d","上傳的檔案不是圖片檔");
+						}
+					}
 					include("page/page-admin_edititem.php");
 				}
 			break;

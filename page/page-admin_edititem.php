@@ -33,20 +33,26 @@
 			</td>
 		</tr>
 	</table>
-	<button class="ui button blue">新增商品</button>
+	<button class="ui button pink">更新商品</button>
 </form>
 </div>
-<?php
-	echo ABSPATH."img/".$item[0]['store_id']."-".$item[0]['item_id'];
-		/*if(file_exists()){
 
-		}*/
-	?><!--<div class="ui vertical divider"></div>-->
 <div class="ui raised segment">
 <h2>商品照片</h2>
-<div>
-	<form class="ui form" enctype="multipart/form-data" method="post" action="sysop.php?act=edititem&store_id=<?php echo $item[0]['store_id'];?>&item_id=<?php echo $item[0]['item_id'];?>">
-		<input name="file" type="file" required="required" id="file" accept="image/*">
-	</form>
+<div class="ui two column middle aligned relaxed fitted stackable grid">
+	<div class="column">
+		<form class="ui form" enctype="multipart/form-data" method="post" action="sysop.php?act=edititem&store_id=<?php echo $item[0]['store_id'];?>&item_id=<?php echo $item[0]['item_id'];?>">
+			<input name="file" type="file" required="required" id="file" accept="image/*">
+			<button class="ui button pink">更新商品照片</button>
+		</form>
+	</div>
+	<div class="ui vertical divider"><i class="photo icon"></i></div>
+	<div class="column">
+		<?php if(file_exists(ABSPATH."img/".$item[0]["item_img"]) && !empty($item[0]["item_img"])){?>
+			<img class="ui small bordered rounded image" src="img/<?php echo $item[0]["item_img"]?>">
+		<?php }else{?>
+			<i class="bordered huge photo icon"></i>
+		<?php }?>
+	</div>
 </div>
 </div>

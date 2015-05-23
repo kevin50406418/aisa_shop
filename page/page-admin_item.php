@@ -56,16 +56,21 @@
 		<tr>
 			<td><?php echo $item['item_id']?></td>
 			<td>
-				<?php if($item['item_num']==0){?>
-				<div class="ui red horizontal label">缺貨</div>
-				<?php }else if($item['item_num']<5){?>
-				<div class="ui green horizontal label">數量低</div>
+				<?php if(file_exists(ABSPATH."img/".$item["item_img"]) && !empty($item["item_img"])){?>
+					<img class="ui tiny middle aligned bordered image" src="img/<?php echo $item["item_img"]?>">
+				<?php }else{?>
+					<i class="bordered big photo icon"></i>
 				<?php }?>
 				<?php echo $item['item_name']?>
+				<?php if($item['item_num']==0){?>
+				<div class="ui red horizontal label">缺貨中</div>
+				<?php }else if($item['item_num']<5){?>
+				<div class="ui green horizontal label">庫存過低</div>
+				<?php }?>
 			</td>
 			<td><?php echo $item['item_price']?></td>
 			<td><?php echo $item['item_num']?></td>
-			<td><?php echo $item['item_type']?></td>
+			<td><?php echo $item['type_name']?></td>
 			<td>
 				<a href="sysop.php?act=edititem&store_id=<?php echo $store[0]['store_id']?>&item_id=<?php echo $item['item_id']?>"><i class="circular edit icon"></i></a>
 			</td>
