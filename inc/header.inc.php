@@ -11,7 +11,23 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="<?php echo asset_url?>semantic.min.js"></script>
 	<script>
-	$(function() {$('.dropdown').dropdown();});
+	$(function() {
+		$('.dropdown').dropdown();
+		$("#check_cart").click(function() {
+	        $('#usercart').modal('show');
+	        $.ajax({
+	            type: "POST",
+	            url: "ajax/cart.php",
+	            success: function(e) {
+	                $("#usercart_result").html(e)
+	            },
+	            error: function(e) {
+	                $("#usercart_result").addClass("ui message red").text("發生錯誤")
+	            }
+	        });
+	        return false
+	    });
+	});
 	</script>
 	<?php switch($page_id){ 
 		case "reg":?>
@@ -28,6 +44,7 @@
 		<a class="item">Messages</a>
 		<a class="item">Friends</a>
 		<div class="right menu">
+			<a class="item" href="#" id="check_cart">購物車</a>
     		<?php if(is_login()){?>
     		<?php if(is_sysop()){?><a class="item" href="sysop.php">管理中心</a><?php }?>
 			<div class="ui dropdown item">
