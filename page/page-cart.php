@@ -37,6 +37,11 @@ switch($step){
 	case 1:
 		include "cart_step_1.php";
 		break; // step =1/default
-
+	case 2:
+		include "cart_step_2.php";
+		break; // step =1/default
+	case 3:
+		include "cart_step_3.php";
+		break; // step =1/default
 
 }?>

@@ -30,6 +30,7 @@
 	});
 	</script>
 	<?php switch($page_id){ 
+		case "order":
 		case "reg":?>
 			<script src="<?php echo asset_url?>jquery.twzipcode.js"></script>
 			<script src="<?php echo asset_url?>reg.js"></script>
@@ -41,8 +42,6 @@
     <h1><a href="<?php echo site_url?>"><?php echo $site_name?></a></h1>
     <div class="ui inverted large menu">
 		<a class="item" href="<?php echo site_url?>">首頁</a>
-		<a class="item">Messages</a>
-		<a class="item">Friends</a>
 		<div class="right menu">
 			<a class="item" href="#" id="check_cart">購物車</a>
     		<?php if(is_login()){?>
@@ -51,7 +50,7 @@
 				<i class="user icon"></i> <?php echo $_SESSION['user_login']?> <i class="caret down icon"></i>
 				<div class="menu">
 					<a class="item">會員中心</a>
-					<a class="item">訂單查詢</a>
+					<a href="order.php" class="item">訂單查詢</a>
 					<a class="item" href="logout.php">登出</a>
 				</div>
 			</div>

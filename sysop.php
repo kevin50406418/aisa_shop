@@ -136,7 +136,42 @@ if(is_login()){
 				}
 			break;
 			case "order":
-				
+				if(isset($_GET['order_id'])){
+					$all_item=$db->Select("shop_item");
+					$item=array();
+					foreach ($all_item as $key => $items) {
+						$item[$items['item_id']]=array();
+						$item[$items['item_id']]=$items;
+					}
+					$order=$db->select("shop_order",array("order_id"=>$_GET['order_id'],"user_login"=>$_SESSION['user_login']));
+					if(is_array($order)){
+
+						if($order[0]['order_staus']==0){
+							if(isset($_POST['submit'])){
+								$receive=array(
+									"order_id"=>$_GET['order_id'],
+									"receive_name"=>$_POST['receive_name'],
+									"receive_address"=>$_POST['receive_address'],
+									"receive_postcode"=>$_POST['zipcode'],
+									"receive_phone"=>$_POST['receive_phone'],
+									"receive_email"=>$_POST['receive_email']
+								);
+								$db->update("shop_order",array("order_staus"=>1),array("order_id"=>$_GET['order_id']));
+								$db->insert($receive,"shop_order_receive");
+								echo '<meta http-equiv="refresh" content="2">';
+							}
+						}else{
+							$receive=$db->select("shop_order_receive",array("order_id"=>$_GET['order_id'],));
+						}
+
+						include("page/page-order.php");
+					}
+				}else{
+					$orders=$db->select("shop_order");
+					if(is_array($orders)){
+						include("page/page-admin_order.php");
+					}
+				}
 			break;
 			case "member":
 				

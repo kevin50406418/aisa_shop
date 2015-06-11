@@ -15,7 +15,7 @@ function get_title($page_id){
 			$title="會員中心";
 		break;
 		case "order":
-			$title="'訂單資訊'";
+			$title="訂單資訊";
 		break;
 		case "sysop":
 			$title="管理中心";
@@ -142,5 +142,36 @@ function is_ajax(){
 		return true;
 	}
 	return false;
+}
+
+function code_payment($code){
+	switch($code){
+		case 1:
+			return "超商繳費：7-11繳費";
+		break;
+		case 2:
+			return "超商繳費：全家繳費";
+		break;
+		case 3:
+			return "ATM";
+		break;
+		case 4:
+			return "信用卡";
+		break;
+	}
+}
+
+function code_shipping($code){
+	switch($code){
+		case 1:
+			return "宅配";
+		break;
+		case 2:
+			return "超商取貨：7-11";
+		break;
+		case 3:
+			return "超商取貨：全家";
+		break;
+	}
 }
 ?>
